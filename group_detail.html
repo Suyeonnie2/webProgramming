@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 모임 - 떡볶이 팀</title>
+    <link rel="stylesheet" href="group_detail_styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo-container">
+                    <img src="./images/logo.png" alt="로고" class="logo">
+                    <nav class="navigation">
+                        <a href="index.html">홈</a>
+                        <a href="my_library.html">나의 서재</a>
+                        <a href="my_groups.html">나의 모임</a>
+                    </nav>
+                    <h1>나의 모임</h1>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="user-icon">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="group-container">
+        <!-- 왼쪽 채팅 섹션 -->
+        <section class="chat-section">
+            <div class="members-list">
+                <h3>음성 채팅 참여하기</h3>
+                <div class="members">
+                    <div class="member">
+                        <img src="/member1.jpg" alt="Amber">
+                        <span>Amber</span>
+                        <span class="status">mic on</span>
+                    </div>
+                    <div class="member">
+                        <img src="/member2.jpg" alt="Jen">
+                        <span>Jen</span>
+                        <span class="status">mic on</span>
+                    </div>
+                    <div class="member">
+                        <img src="/member3.jpg" alt="Sam">
+                        <span>Sam</span>
+                        <span class="status">mic on</span>
+                    </div>
+                    <div class="member">
+                        <img src="/member4.jpg" alt="Fredrick">
+                        <span>Fredrick</span>
+                        <span class="status">mic on</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <button class="add-button">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <input type="text" placeholder="메시지를 입력하세요">
+                <button class="send-button">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </section>
+
+        <section class="group-info">
+            <div class="group-header">
+                <div class="group-title">
+                    <h2>떡볶이 팀</h2>
+                    <p class="group-description">
+                        Climate change is beginning to have a devastating impact on forests across the world
+                    </p>
+                </div>
+                <button class="leave-button">목록으로 돌아가기 →</button>
+            </div>
+
+            <div class="group-details">
+                <div class="detail-item">
+                    <div class="detail-label">개설자</div>
+                    <div class="detail-value">
+                        <img src="/member1.jpg" alt="Amber" class="small-avatar">
+                        <span>Amber</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">개설 날짜</div>
+                    <div class="detail-value">2024/10/01</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">모임 날짜</div>
+                    <div class="detail-value">매주 수요일 오후 7:30</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">인원</div>
+                    <div class="detail-value">현재 5명</div>
+                </div>
+            </div>
+
+            <div class="current-book">
+                <h3>다음주에 토론할 책
+                    <button class="edit-button">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </h3>
+                <div class="book-card">
+                    <img src="/book-cover.jpg" alt="소년이 온다" class="book-cover">
+                    <div class="book-title">소년이 온다</div>
+                    <div class="book-author">한강</div>
+                </div>
+            </div>
+
+            <div class="discussions">
+                <h3>공지사항</h3>
+                <div class="discussion-list">
+                    <div class="discussion">
+                        <div class="discussion-header">
+                            <img src="/member1.jpg" alt="Amber" class="small-avatar">
+                            <span class="author">Amber</span>
+                            <span class="date">2024/10/01</span>
+                        </div>
+                        <p class="discussion-text">
+                            공지사항 공지사항. 공지사항 공지사항. 공지사항 공지사항. 공지사항 공지사항. 공지사항
+                            공지사항.
+                        </p>
+                    </div>
+                    <div class="discussion">
+                        <div class="discussion-header">
+                            <img src="/member1.jpg" alt="Amber" class="small-avatar">
+                            <span class="author">Amber</span>
+                            <span class="date">2024/10/01</span>
+                        </div>
+                        <p class="discussion-text">
+                            공지사항 공지사항. 공지사항 공지사항. 공지사항 공지사항. 공지사항 공지사항. 공지사항
+                            공지사항.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-button">수정</button>
+                <button class="action-button danger">모임에서 나가기</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 모임</title>
+    <link rel="stylesheet" href="ownteam_styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="./images/logo.png" alt="로고" class="logo">
+            <nav class="navigation">
+                <a href="index.html">홈</a>
+                <a href="recruiting.html">모집 중</a>
+                <a href="my_library.html">나의 서재</a>
+            </nav>
+            <h1>나의 모임</h1>
+        </div>
+        <div class="user-icon">
+            <i class="fa-regular fa-user"></i>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="voice-chat-section">
+                <h2>음성 채팅 참여하기 <button id="voiceButton" class="voice-button"><i class="fas fa-phone"></i></button></h2>
+                <div class="voice-controls" style="display: none;">
+                    <button id="endCallButton" class="voice-control-button"><i class="fas fa-phone-slash"></i></button>
+                    <button id="toggleMicButton" class="voice-control-button"><i class="fas fa-microphone"></i></button>
+                </div>
+                <div class="members">
+                    <div class="member">
+                        <img src="./images/member.png" alt="Amber" class="avatar">
+                        <span>Amber</span>
+                        <span class="status">mic on</span>
+                    </div>
+                    <div class="member">
+                        <img src="./images/member.png" alt="Jen" class="avatar">
+                        <span>Jen</span>
+                        <span class="status">mic on</span>
+                    </div>
+                    <div class="member">
+                        <img src="./images/member.png" alt="Sam" class="avatar">
+                        <span>Sam</span>
+                        <span class="status">mic on</span>
+                    </div>
+                    <div class="member">
+                        <img src="./images/member.png" alt="Fredrick" class="avatar">
+                        <span>Fredrick</span>
+                        <span class="status">mic on</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-area" id="chatArea">
+            </div>
+
+            <div class="message-input-area">
+                <button class="add-button">+</button>
+                <input type="text" id="messageInput" placeholder="메시지를 입력하세요...">
+                <button class="send-button" onclick="sendMessage()">→</button>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="book-detail">
+                <h2>떡볶이 팀 <button class="edit-team-button"><i class="fas fa-edit"></i></button></h2>
+                <p class="climate-notice">Climate change is beginning to have a devastating impact on forests across the world</p>
+
+                <div class="meeting-info">
+                    <div class="info-row">
+                        <span class="label">개설자</span>
+                        <div class="value">
+                            <img src="./images/profile.png" alt="수연이" class="avatar">
+                            <span>수연이</span>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">개설 날짜</span>
+                        <span class="value">2024/10/01</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">모임 날짜</span>
+                        <span class="value">매주 수요일 오후 7:30</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">인원</span>
+                        <span class="value">현재 5명 / 최대 8명</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="join-button">공유</button>
+                    <button class="more-button">모임에서 나가기 →</button>
+                    <button type="button" class="back-button" onclick="location.href='my_groups.html'">목록으로 돌아가기 →</button>
+
+                </div>
+
+                <div id="leaveTeamModal" class="modal">
+                    <div class="modal-content">
+                        <h2>모임 탈퇴</h2>
+                        <p>정말 모임에서 탈퇴하시겠습니까?</p>
+                        <div class="modal-buttons">
+                            <button onclick="closeLeaveTeamModal()" class="cancel-btn">아니오</button>
+                            <button onclick="confirmLeaveTeam()" class="confirm-btn">예</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="editTeamModal" class="modal">
+                    <div class="modal-content">
+                        <h2>팀 정보 수정</h2>
+                        <form id="editTeamForm">
+                            <div class="form-group">
+                                <label for="teamName">팀 이름</label>
+                                <input type="text" id="teamName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="teamDescription">팀 설명</label>
+                                <textarea id="teamDescription" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="maxMembers">최대 인원</label>
+                                <input type="number" id="maxMembers" min="5" max="20" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="meetingDate">모임 날짜</label>
+                                <input type="text" id="meetingDate" required placeholder="예: 매주 수요일 오후 7:30">
+                            </div>
+                            <div class="modal-buttons">
+                                <button type="button" onclick="closeEditTeamModal()">취소</button>
+                                <button type="submit">저장</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="book-cards">
+                    <div class="book-card">
+                        <div class="card-header">
+                            <h3>다음주에 토론할 책</h3>
+                            <button class="edit-button" onclick="openBookSelect()">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                        <img src="./images/book2.png" alt="소년이 온다" class="book-cover">
+                        <h4>소년이 온다</h4>
+                        <p>한강</p>
+                    </div>
+
+                    <div class="discussion-section">
+                        <div class="section-header">
+                            <h3>공지사항</h3>
+                            <button class="add-notice-button" onclick="openNoticeForm()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="notice-cards">
+                            <div class="notice-card">
+                                <div class="post-header">
+                                    <span>제목입니다.</span>
+                                    <div class="post-meta">
+                                        <img src="./images/member.png" alt="Amber" class="avatar">
+                                        <span>Amber</span>
+                                        <span class="date">2024/10/01</span>
+                                    </div>
+                                </div>
+                                <p>공지사항 글입니다. 공지사항 글입니다. 공지사항 글입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+<div id="bookSelectModal" class="modal">
+    <div class="modal-content">
+        <h2>책 선택</h2>
+        <div class="book-search">
+            <input type="text" id="bookSearchInput" placeholder="책 검색...">
+
+        </div>
+        <div class="book-list">
+
+        </div>
+        <div class="modal-buttons">
+            <button onclick="closeBookSelect()">취소</button>
+            <button onclick="confirmBookSelection()">선택</button>
+        </div>
+    </div>
+</div>
+
+    <div id="noticeFormModal" class="modal">
+        <div class="modal-content">
+            <h2>공지사항 작성</h2>
+            <form id="noticeForm">
+                <div class="form-group">
+                    <label for="noticeTitle">제목</label>
+                    <input type="text" id="noticeTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="noticeContent">내용</label>
+                    <textarea id="noticeContent" required></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" onclick="closeNoticeForm()">취소</button>
+                    <button type="submit">등록</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editTeamModal" class="modal">
+        <div class="modal-content">
+            <h2>팀 정보 수정</h2>
+            <form id="editTeamForm">
+                <div class="form-group">
+                    <label for="teamName">팀 이름</label>
+                    <input type="text" id="teamName" required>
+                </div>
+                <div class="form-group">
+                    <label for="teamDescription">팀 설명</label>
+                    <textarea id="teamDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="teamImage">팀 이미지</label>
+                    <input type="file" id="teamImage" accept="image/*">
+                    <img id="teamImagePreview" src="" alt="미리보기" style="display: none; max-width: 200px; margin-top: 10px;">
+                </div>
+                <div class="form-group">
+                    <label for="maxMembers">최대 인원</label>
+                    <input type="number" id="maxMembers" min="5" max="20" required>
+                </div>
+                <div class="form-group">
+                    <label for="meetingDate">모임 날짜</label>
+                    <input type="text" id="meetingDate" required placeholder="예: 매주 수요일 오후 7:30">
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" onclick="closeEditTeamModal()">취소</button>
+                    <button type="submit">저장</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="ownteam_script.js"></script>
+</body>
+</html>
